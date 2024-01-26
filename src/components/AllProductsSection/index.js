@@ -71,6 +71,7 @@ const apiStatusConstants = {
   failure: 'FAILURE',
   inProgress: 'IN_PROGRESS',
 }
+
 class AllProductsSection extends Component {
   state = {
     productsList: [],
@@ -86,7 +87,7 @@ class AllProductsSection extends Component {
   }
 
   getProducts = async () => {
-    this.state({
+    this.setState({
       apiStatus: apiStatusConstants.inProgress,
     })
     const jwtToken = Cookies.get('jwt_token')
@@ -134,9 +135,9 @@ class AllProductsSection extends Component {
   renderFailureView = () => (
     <div className="products-error-view-container">
       <img
-        className="products-failure-img"
         src="https://assets.ccbp.in/frontend/react-js/nxt-trendz/nxt-trendz-products-error-view.png"
         alt="products failure"
+        className="products-failure-img"
       />
       <h1 className="product-failure-heading-text">
         Oops! Something Went Wrong
@@ -147,7 +148,7 @@ class AllProductsSection extends Component {
     </div>
   )
 
-  changeSortBy = activeOptionId => {
+  changeSortby = activeOptionId => {
     this.setState({activeOptionId}, this.getProducts)
   }
 
@@ -160,7 +161,7 @@ class AllProductsSection extends Component {
         <ProductsHeader
           activeOptionId={activeOptionId}
           sortbyOptions={sortbyOptions}
-          changeSortBy={this.changeSortBy}
+          changeSortby={this.changeSortby}
         />
         <ul className="products-list">
           {productsList.map(product => (
@@ -172,8 +173,8 @@ class AllProductsSection extends Component {
       <div className="no-products-view">
         <img
           src="https://assets.ccbp.in/frontend/react-js/nxt-trendz/nxt-trendz-no-products-view.png"
-          alt="no products"
           className="no-products-img"
+          alt="no products"
         />
         <h1 className="no-products-heading">No Products Found</h1>
         <p className="no-products-description">

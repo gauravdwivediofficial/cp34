@@ -1,14 +1,18 @@
 import {BsSearch} from 'react-icons/bs'
+
 import './index.css'
 
 const FiltersGroup = props => {
   const renderRatingsFiltersList = () => {
     const {ratingsList} = props
+
     return ratingsList.map(rating => {
       const {changeRating, activeRatingId} = props
       const onClickRatingItem = () => changeRating(rating.ratingId)
+
       const ratingClassName =
         activeRatingId === rating.ratingId ? `and-up active-rating` : `and-up`
+
       return (
         <li
           className="rating-item"
@@ -35,6 +39,7 @@ const FiltersGroup = props => {
 
   const renderCategoriesList = () => {
     const {categoryOptions} = props
+
     return categoryOptions.map(category => {
       const {changeCategory, activeCategoryId} = props
       const onClickCategoryItem = () => changeCategory(category.categoryId)
@@ -42,6 +47,7 @@ const FiltersGroup = props => {
       const categoryClassName = isActive
         ? `category-name active-category-name`
         : `category-name`
+
       return (
         <li
           className="category-item"
@@ -75,6 +81,7 @@ const FiltersGroup = props => {
 
   const renderSearchInput = () => {
     const {searchInput} = props
+
     return (
       <div className="search-input-container">
         <input
@@ -98,8 +105,8 @@ const FiltersGroup = props => {
       {renderProductCategories()}
       {renderRatingsFilters()}
       <button
-        className="clear-filters-btn"
         type="button"
+        className="clear-filters-btn"
         onClick={clearFilters}
       >
         Clear Filters
@@ -107,4 +114,5 @@ const FiltersGroup = props => {
     </div>
   )
 }
+
 export default FiltersGroup
